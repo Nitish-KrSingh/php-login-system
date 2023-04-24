@@ -95,23 +95,7 @@ mysqli_close($conn);
     <link rel="stylesheet" href="loginStyle.css">
     <title>Register</title>
   </head>
-  <body>
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-  <a class="navbar-brand" <a href="home.php">AYURVAIDYA</a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-  <div class="collapse navbar-collapse" id="navbarNavDropdown">
-  <ul class="navbar-nav">
-      <li class="nav-item active">
-        <a class="nav-link" href="home.php">Home <span class="sr-only">(current)</span></a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="login.php">Login</a>
-      </li>
-    </ul>
-  </div>
-</nav>
+  <body  onload="createCaptcha()">
 <!-- SignUp Form -->
 
 <section class="h-auto">
@@ -121,30 +105,44 @@ mysqli_close($conn);
 
         <div class="px-5 ms-xl-4 mt-2 " >
           <i class="fas fa-crow fa-2x me-3 pt-5 mt-xl-4" style="color: #709085;"></i>
-          <span class="h1 fw-bold mb-0"><a href="#"></a>AYURVAIDYA</span>
+          <span class="h1 fw-bold mb-0"><a href="home.php">AYURVAIDYA</a></span>
         </div>
 
         <div class="d-flex align-items-center h-custom-2 px-5 ms-xl-4 mt-5 pt-5 pt-xl-0 mt-xl-n5 ">
 
-          <form action="" method="post" style="width: 23rem;">
+          <form action="" onsubmit="return validateCaptcha()" method="post" style="width: 23rem;">
 
             <h3 class="fw-normal mb-3 pb-3 " style="letter-spacing: 1px;">Register :</h3>
 
-            <div class="form-outline mb-4">
+            <div class="form-outline mb-3">
             <label for="inputEmail4">Username</label>
             <input type="text" class="form-control" name="username" id="inputEmail4" placeholder="Email">
             </div>
 
-            <div class="form-outline mb-4">
+            <div class="form-outline mb-3">
                  <label for="inputPassword4">Password</label>
                  <input type="password" class="form-control" name ="password" id="inputPassword4" placeholder="Password">
             </div>
 
-            <div class="form-outline mb-4">
+            <div class="form-outline mb-3">
                   <label for="inputPassword4">Confirm Password</label>
                   <input type="password" class="form-control" name ="confirm_password" id="inputPassword" placeholder="Confirm Password">
             </div>
 
+            <!-- captcha -->
+            <div class="form-outline mb-2">
+                <div class="row" style="margin-bottom:-20px;">
+                  <div class="form-group col-6">
+                    <label>Enter Captcha</label>
+                    <input type="text" placeholder="Captcha" class="form-control" id="cpatchaTextBox">
+                  </div>
+                  <div class="form-group col-6">
+                    <label>Captcha Code</label>
+                    <div id="captcha"></div>
+                  </div>
+                </div>
+              </div>
+<!-- captcha -->
 
 
 
@@ -169,6 +167,7 @@ mysqli_close($conn);
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="captcha.js"></script>
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
